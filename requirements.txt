@@ -1,0 +1,24 @@
+langchain 
+openai
+huggingface_hub
+python-dotenv
+streamlit
+tensorflow  ### tensorflow==2.12.0
+pandas 
+mlflow #mlflow==2.2.2
+notebook
+numpy
+matplotlib
+seaborn
+python-box  ### use for python-box exception instead of custom expexception.
+pyyaml
+tqdm
+ensure ### it will ensure anootation for wrong input 
+joblib
+types-PyYAML
+dvc
+scipy
+Flask
+Flask-Cors
+gdown
+-e .
