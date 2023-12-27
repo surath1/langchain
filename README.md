@@ -1,12 +1,12 @@
 
 ### ChatGPT basic 
-ChatGPT --> OpenAI --> GPT3.4/GPT4
--ChatGPT is an application 
--GPT3.4/GPT4 are LLM
--ChatGPT cost associated(1000 token 0.002c)
--Does not answer some question, knowlwdge is limited.
--No access to private data
--No access to google/wikipedia etc
+ChatGPT --> OpenAI --> GPT3.4/GPT4  \n
+-ChatGPT is an application \n
+-GPT3.4/GPT4 are LLM  \n
+-ChatGPT cost associated(1000 token 0.002c)  \n
+-Does not answer some question, knowlwdge is limited.  \n
+-No access to private data  \n
+-No access to google/wikipedia etc  \n
 
 ### Langchain  
 [Application] 
