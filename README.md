@@ -30,10 +30,11 @@ ChatGPT --> OpenAI --> GPT3.4/GPT4
 # pip list
 
 import os
-os.environ["OPENAI_API_KEY"] = 'sk-v4HjJoJZm------------------'
+os.environ["OPENAI_API_KEY"] = 'sk---'
 
 from langchain.llms import OpenAI
 llm = OpenAI(temperature=0.6) # temperature means how creative/risk your model (1 highest 0 lowest) 
+#llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 text = "What would be a good company to work as ML engineer in USA?"
 print(llm(text))
 ```
@@ -105,5 +106,80 @@ chain({'name':'AI'})
 
 ```
 
+### langchain -LLM Agent
+- The core idea of agents is to use a language model to choose a sequence of actions to take
+- LLM has Knowlwdge to understand and respond your request, but it has Reasoning to identify the request.
+- configure google, wiki, math etc 
+
+```bash
+from langchain.agents import AgentType, Tool, initialize_agent, load_tools
+from langchain.chat_models import ChatOpenAI
+from langchain.utilities import SerpAPIWrapper
+
+tools = load_tools(["wikipedia","llm-math"], llm=llm)
+agent = initialize_agent(
+    tools,
+    llm,
+    #llm=OpenAI(temperature=0, max_tokens=1000),
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True  # go step by step
+)
+agent.run('When Mark Zuckerberg born and what is the age on 2020')
+
+```
+
+### langchain - serp Api 
+
+```bash
+import os
+os.environ["SERPAPI_API_KEY"] = ''
+
+from langchain.utilities import SerpAPIWrapper
+search = SerpAPIWrapper()
+search.run("Obama's first name?")
+```
+
+### langchain - Memory
+
+```bash
+from langchain.memory import ConversationBufferMemory
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+
+prompt_template_name = PromptTemplate(
+    input_variables = ['name'],
+    template = 'Want to open a {name} company please suggest a fancy name?'
+)
+memory1 = ConversationBufferMemory()
+chain = LLMChain(llm=llm, prompt=prompt_template_name, memory=memory1)
+print(chain.memory)
+names = chain.run('AI')
+print(names)
+
+print(chain.memory)
+print(chain.memory.buffer)
 
 
+### ConversationChain - 
+
+from langchain.chains import ConversationChain
+conversation = ConversationChain(llm=llm)
+print(conversation.prompt)
+print(conversation.prompt.template)
+conversation.run("Translate this sentence from English to French: I love programming.")
+conversation.run("What is 2+2?")
+
+print(conversation.memory)
+print(conversation.memory.buffer)
+
+## ConversationBufferWindowMemory
+
+from langchain.memory import ConversationBufferWindowMemory
+memory = ConversationBufferWindowMemory(k=2) # k- remember last 2 conversation 
+conversation = ConversationChain(llm=llm, memory=memory)
+
+conversation.run("USA GDP 2023")
+conversation.run(5+5)
+conversation.run("Which city Barack Obama was born?")
+
+```
