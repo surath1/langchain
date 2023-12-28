@@ -1,12 +1,11 @@
 
 ### ChatGPT basic 
 ChatGPT --> OpenAI --> GPT3.4/GPT4
--ChatGPT is an application 
--GPT3.4/GPT4 are LLM
--ChatGPT cost associated(1000 token 0.002c)
--Does not answer some question, knowlwdge is limited.
--No access to private data
--No access to google/wikipedia etc
+- ChatGPT is an application & GPT3.4/GPT4 are LLM
+- ChatGPT cost associated(1000 token 0.002c initial $5 credit)
+- ChatGPT does not answer all question, knowlwdge is limited.
+- ChatGPT does not access to private data etc.
+- ChatGPT does not access to google/wikipedia/social media data etc!
 
 ### Langchain  
 [Your application want to access bellow to get the details] 
@@ -15,9 +14,9 @@ ChatGPT --> OpenAI --> GPT3.4/GPT4
 - Bloom
 - Company DB etc.
 
-LangChain platform uses OpnAI/Hugingface/Bloom/Google/wiki/Company DB etc 
+- LangChain platform uses OpnAI/Hugingface/Bloom/Google/wiki/Company DB etc 
 
-Langchain is a framework allow user to build LLM application.
+- Langchain is a framework, that allow user to build LLM application.
 
 ### OpenAI setup
 
@@ -25,6 +24,10 @@ Langchain is a framework allow user to build LLM application.
 !pip install --upgrade pip
 !pip install langchain
 !pip install openai
+!pip install streamlit 
+# pip uninstall tensorflow
+# pip install tensorflow==2.13
+# pip list
 
 import os
 os.environ["OPENAI_API_KEY"] = 'sk-v4HjJoJZm------------------'
@@ -35,7 +38,7 @@ text = "What would be a good company to work as ML engineer in USA?"
 print(llm(text))
 ```
 
-## langchain 
+### langchain 
 ```bash
 from langchain.prompts import PromptTemplate
 prompt_template_name = PromptTemplate(
@@ -51,7 +54,7 @@ names = chain.run('AI')
 print(names)
 ```
 
-## langchain - SimpleSequentialChain
+### langchain - SimpleSequentialChain
 ```bash
 # Sequential Chain
 # multiple --> input -> input --> output / Just give one output the final one 
@@ -76,7 +79,7 @@ response = chain.run('AI')
 print(response)
 ```
 
-## langchain - SequentialChain
+### langchain - SequentialChain
 ```bash
 # Sequential Chain (Multiple input/output)
 prompt_template_nm = PromptTemplate(
