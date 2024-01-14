@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+research/__pycache__/
 *.py[cod]
 *$py.class
 
@@ -87,6 +88,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# FAISS
+faiss_index/
 
 # Spyder project settings
 .spyderproject
