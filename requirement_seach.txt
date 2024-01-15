@@ -6,3 +6,5 @@ faiss-cpu
 streamlit
 sentence-transformers
 PyPDF2
+docarray
+tiktoken

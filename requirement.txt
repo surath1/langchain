@@ -6,3 +6,5 @@ streamlit
 BeautifulSoup4
 chromadb
 faiss-cpu
+docarray
+tiktoken
